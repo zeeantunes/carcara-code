@@ -593,6 +593,7 @@
     "error": "Update mislukt",
     "upToDate": "Je hebt de nieuwste versie",
     "dev": "Updates niet beschikbaar in dev",
+    "unsupported": "Automatische updates niet beschikbaar in deze build",
     "downloadBtn": "Downloaden",
     "installBtn": "Nu herstarten",
     "retryBtn": "Opnieuw proberen",

@@ -101,6 +101,14 @@ function whichCmdFor(platform = process.platform) {
   return tableFor(platform).whichCmd || 'which';
 }
 
+// Auto-update é viável no SO? No macOS o Squirrel.Mac só aplica atualização em app
+// assinado com Developer ID da Apple, e o build usa `identity: null` (sem assinatura) —
+// então checar só produziria erro. Windows (NSIS) e Linux (AppImage) atualizam sem
+// assinatura. Se um dia o app for assinado e notarizado, darwin volta pra lista.
+function supportsAutoUpdate(platform = process.platform) {
+  return platform !== 'darwin';
+}
+
 const isWin = process.platform === 'win32';
 const isMac = process.platform === 'darwin';
 const isLinux = process.platform === 'linux';
@@ -161,6 +169,7 @@ module.exports = {
   loginArgsFor,
   shellChoicesFor,
   whichCmdFor,
+  supportsAutoUpdate,
   fixLoginPath,
   macMenuTemplate,
   isWin,

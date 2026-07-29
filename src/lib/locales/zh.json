@@ -593,6 +593,7 @@
     "error": "更新失败",
     "upToDate": "你已使用最新版本",
     "dev": "开发模式下无法更新",
+    "unsupported": "此版本不支持自动更新",
     "downloadBtn": "下载",
     "installBtn": "立即重启",
     "retryBtn": "重试",

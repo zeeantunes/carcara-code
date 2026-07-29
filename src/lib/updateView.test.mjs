@@ -28,6 +28,12 @@ describe('updateView', () => {
   it('dev fica invisível', () => {
     expect(updateView({ state: 'dev' }, t).visible).toBe(false);
   });
+  it('unsupported some da pílula, mas diz o porquê (não finge estar atualizado)', () => {
+    const v = updateView({ state: 'unsupported' }, t);
+    expect(v.visible).toBe(false);
+    expect(v.action).toBe(null);
+    expect(v.title).toBe('update.unsupported');
+  });
 });
 
 describe('hasPendingUpdate', () => {

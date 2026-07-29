@@ -196,6 +196,28 @@ assert(
 );
 console.log('scaffold-core OK');
 
+// supportsAutoUpdate: só darwin fica de fora (Squirrel.Mac exige app assinado)
+const { supportsAutoUpdate } = require('../electron/platform.cjs');
+assert(supportsAutoUpdate('win32') === true, 'auto-update habilitado no win32');
+assert(supportsAutoUpdate('linux') === true, 'auto-update habilitado no linux');
+assert(supportsAutoUpdate('darwin') === false, 'auto-update desabilitado no darwin');
+
+// updater: em SO sem auto-update, nem carrega o electron-updater e reporta 'unsupported'
+const { initUpdater } = require('../electron/updater.cjs');
+const vistos = [];
+const up = initUpdater({
+  send: (s) => vistos.push(s.state),
+  isPackaged: true,
+  platform: 'darwin',
+});
+up.checkOnBoot();
+up.check();
+assert(
+  vistos.length === 2 && vistos.every((s) => s === 'unsupported'),
+  "updater darwin: check/checkOnBoot -> 'unsupported'",
+);
+console.log('updater OK');
+
 // fixLoginPath é no-op seguro fora de darwin/linux (não lança, retorna false)
 const { fixLoginPath } = require('../electron/platform.cjs');
 (async () => {

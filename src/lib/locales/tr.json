@@ -593,6 +593,7 @@
     "error": "Güncelleme başarısız oldu",
     "upToDate": "En son sürümü kullanıyorsun",
     "dev": "Geliştirme modunda güncellemeler kullanılamaz",
+    "unsupported": "Bu derlemede otomatik güncelleme kullanılamıyor",
     "downloadBtn": "İndir",
     "installBtn": "Şimdi yeniden başlat",
     "retryBtn": "Tekrar dene",

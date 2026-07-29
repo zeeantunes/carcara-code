@@ -1,6 +1,9 @@
 // Wrapper do electron-updater: liga os eventos do autoUpdater a um único canal de
 // status e expõe check/download/install. O autoUpdater é injetável pra testar sem a
-// lib (e pra não carregá-la em dev). Em dev (não empacotado) nada roda: só reporta 'dev'.
+// lib (e pra não carregá-la em dev). Em dev (não empacotado) nada roda: só reporta 'dev';
+// em SO sem auto-update viável (ver platform.supportsAutoUpdate), reporta 'unsupported'.
+
+const { supportsAutoUpdate } = require('./platform.cjs');
 
 function normalizeNotes(notes) {
   if (!notes) return '';
@@ -10,10 +13,17 @@ function normalizeNotes(notes) {
   return '';
 }
 
-function initUpdater({ send, notify, isPackaged, autoUpdater }) {
+function initUpdater({ send, notify, isPackaged, autoUpdater, platform }) {
   if (!isPackaged) {
     const dev = () => send({ state: 'dev' });
     return { check: dev, download: dev, install: () => {}, checkOnBoot: () => {} };
+  }
+
+  // Sem auto-update viável no SO: não chega a consultar o feed (a consulta só geraria
+  // erro), e a UI mostra "indisponível" em vez de "falha ao atualizar".
+  if (!supportsAutoUpdate(platform)) {
+    const off = () => send({ state: 'unsupported' });
+    return { check: off, download: off, install: () => {}, checkOnBoot: off };
   }
 
   const au = autoUpdater || require('electron-updater').autoUpdater;

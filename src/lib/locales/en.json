@@ -593,6 +593,7 @@
     "error": "Update failed",
     "upToDate": "You're on the latest version",
     "dev": "Updates unavailable in dev",
+    "unsupported": "Automatic updates unavailable in this build",
     "downloadBtn": "Download",
     "installBtn": "Restart now",
     "retryBtn": "Try again",

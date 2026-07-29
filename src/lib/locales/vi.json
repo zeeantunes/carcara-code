@@ -593,6 +593,7 @@
     "error": "Cập nhật thất bại",
     "upToDate": "Bạn đang dùng phiên bản mới nhất",
     "dev": "Cập nhật không khả dụng trong chế độ dev",
+    "unsupported": "Không có cập nhật tự động trong bản dựng này",
     "downloadBtn": "Tải xuống",
     "installBtn": "Khởi động lại ngay",
     "retryBtn": "Thử lại",

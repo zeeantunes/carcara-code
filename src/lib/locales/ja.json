@@ -593,6 +593,7 @@
     "error": "更新に失敗しました",
     "upToDate": "最新バージョンです",
     "dev": "開発版では更新は利用できません",
+    "unsupported": "このビルドでは自動更新を利用できません",
     "downloadBtn": "ダウンロード",
     "installBtn": "今すぐ再起動",
     "retryBtn": "もう一度試す",

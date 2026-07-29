@@ -593,6 +593,7 @@
     "error": "Aggiornamento non riuscito",
     "upToDate": "Hai l'ultima versione",
     "dev": "Aggiornamenti non disponibili in dev",
+    "unsupported": "Aggiornamento automatico non disponibile in questa build",
     "downloadBtn": "Scarica",
     "installBtn": "Riavvia ora",
     "retryBtn": "Riprova",

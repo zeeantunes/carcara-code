@@ -15,7 +15,7 @@ function fakeAU() {
 describe('initUpdater (empacotado)', () => {
   it('configura autoDownload=false e autoInstallOnAppQuit=true', () => {
     const au = fakeAU();
-    initUpdater({ send: () => {}, isPackaged: true, autoUpdater: au });
+    initUpdater({ send: () => {}, isPackaged: true, autoUpdater: au, platform: 'win32' });
     expect(au.autoDownload).toBe(false);
     expect(au.autoInstallOnAppQuit).toBe(true);
   });
@@ -23,7 +23,12 @@ describe('initUpdater (empacotado)', () => {
   it('mapeia os eventos do autoUpdater pra estados', () => {
     const sent = [];
     const au = fakeAU();
-    initUpdater({ send: (p) => sent.push(p), isPackaged: true, autoUpdater: au });
+    initUpdater({
+      send: (p) => sent.push(p),
+      isPackaged: true,
+      autoUpdater: au,
+      platform: 'win32',
+    });
     au.emit('checking-for-update');
     au.emit('update-available', { version: '0.1.3', releaseNotes: 'corrige x' });
     au.emit('download-progress', { percent: 42.7 });
@@ -43,7 +48,13 @@ describe('initUpdater (empacotado)', () => {
   it('notifica só quando o update vem da checagem de boot', () => {
     const notify = vi.fn();
     const au = fakeAU();
-    const u = initUpdater({ send: () => {}, notify, isPackaged: true, autoUpdater: au });
+    const u = initUpdater({
+      send: () => {},
+      notify,
+      isPackaged: true,
+      autoUpdater: au,
+      platform: 'win32',
+    });
     u.check(); // manual
     au.emit('update-available', { version: '0.1.3' });
     expect(notify).not.toHaveBeenCalled();
@@ -54,11 +65,34 @@ describe('initUpdater (empacotado)', () => {
 
   it('download/install delegam pro autoUpdater', () => {
     const au = fakeAU();
-    const u = initUpdater({ send: () => {}, isPackaged: true, autoUpdater: au });
+    const u = initUpdater({ send: () => {}, isPackaged: true, autoUpdater: au, platform: 'win32' });
     u.download();
     u.install();
     expect(au.downloadUpdate).toHaveBeenCalled();
     expect(au.quitAndInstall).toHaveBeenCalled();
+  });
+});
+
+describe('initUpdater (SO sem auto-update)', () => {
+  it('não toca no autoUpdater e reporta unsupported', () => {
+    const sent = [];
+    const au = fakeAU();
+    const u = initUpdater({
+      send: (p) => sent.push(p),
+      isPackaged: true,
+      autoUpdater: au,
+      platform: 'darwin',
+    });
+    u.checkOnBoot();
+    u.check();
+    u.download();
+    expect(sent).toEqual([
+      { state: 'unsupported' },
+      { state: 'unsupported' },
+      { state: 'unsupported' },
+    ]);
+    expect(au.checkForUpdates).not.toHaveBeenCalled();
+    expect(au.downloadUpdate).not.toHaveBeenCalled();
   });
 });
 

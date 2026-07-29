@@ -593,6 +593,7 @@
     "error": "Update fehlgeschlagen",
     "upToDate": "Du hast die neueste Version",
     "dev": "Updates im Dev-Modus nicht verfügbar",
+    "unsupported": "Automatische Updates in diesem Build nicht verfügbar",
     "downloadBtn": "Herunterladen",
     "installBtn": "Jetzt neu starten",
     "retryBtn": "Erneut versuchen",

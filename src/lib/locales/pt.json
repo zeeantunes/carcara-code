@@ -593,6 +593,7 @@
     "error": "Falha ao atualizar",
     "upToDate": "Você está na última versão",
     "dev": "Atualização indisponível em dev",
+    "unsupported": "Atualização automática indisponível neste build",
     "downloadBtn": "Baixar",
     "installBtn": "Reiniciar agora",
     "retryBtn": "Tentar de novo",

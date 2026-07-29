@@ -1410,7 +1410,7 @@ export function SettingsModal({
                 {/* Atualização: checagem manual + status (espelha a pílula). */}
                 {(() => {
                   const v = updateView(update, t);
-                  const isDev = update.state === 'dev';
+                  const isDev = update.state === 'dev' || update.state === 'unsupported';
                   const statusText = update.state === 'idle' ? t('update.upToDate') : v.title;
                   return (
                     <div className="mb-5 flex items-center justify-between gap-3 rounded-lg border px-4 py-3">

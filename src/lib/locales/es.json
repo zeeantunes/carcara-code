@@ -593,6 +593,7 @@
     "error": "Error al actualizar",
     "upToDate": "Tienes la última versión",
     "dev": "Actualizaciones no disponibles en dev",
+    "unsupported": "Actualización automática no disponible en esta compilación",
     "downloadBtn": "Descargar",
     "installBtn": "Reiniciar ahora",
     "retryBtn": "Intentar de nuevo",

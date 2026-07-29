@@ -26,6 +26,10 @@ export function updateView(update, t) {
       return { visible: true, title: t('update.ready'), showProgress: false, action: 'install' };
     case 'error':
       return { visible: true, title: t('update.error'), showProgress: false, action: 'retry' };
+    // Auto-update indisponível neste SO/build: some da pílula (nada a fazer pelo usuário),
+    // mas a aba Sobre explica o porquê em vez de dizer que está na última versão.
+    case 'unsupported':
+      return { visible: false, title: t('update.unsupported'), showProgress: false, action: null };
     case 'dev':
     case 'idle':
     default:

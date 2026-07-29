@@ -593,6 +593,7 @@
     "error": "Pembaruan gagal",
     "upToDate": "Anda memakai versi terbaru",
     "dev": "Pembaruan tidak tersedia di mode dev",
+    "unsupported": "Pembaruan otomatis tidak tersedia di build ini",
     "downloadBtn": "Unduh",
     "installBtn": "Mulai ulang sekarang",
     "retryBtn": "Coba lagi",

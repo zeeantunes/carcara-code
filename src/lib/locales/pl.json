@@ -593,6 +593,7 @@
     "error": "Aktualizacja nie powiodła się",
     "upToDate": "Masz najnowszą wersję",
     "dev": "Aktualizacje niedostępne w trybie dev",
+    "unsupported": "Automatyczne aktualizacje niedostępne w tej kompilacji",
     "downloadBtn": "Pobierz",
     "installBtn": "Uruchom ponownie teraz",
     "retryBtn": "Spróbuj ponownie",
