@@ -54,7 +54,8 @@
       "!.claude/**",
       "!.superpowers/**",
       "!docs/**",
-      "!release/**"
+      "!release/**",
+      "!**/*.map"
     ],
     "npmRebuild": false,
     "asarUnpack": [
