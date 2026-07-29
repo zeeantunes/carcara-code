@@ -40,7 +40,7 @@
   },
   "build": {
     "appId": "com.carcara.code",
-    "productName": "Carcará Code",
+    "productName": "Carcara Code",
     "publish": {
       "provider": "github",
       "owner": "Yg0rAndrade",
@@ -78,7 +78,12 @@
       "target": "AppImage",
       "icon": "build/icon.png",
       "category": "Development",
-      "artifactName": "CarcaraCode-${version}.AppImage"
+      "artifactName": "CarcaraCode-${version}.AppImage",
+      "desktop": {
+        "entry": {
+          "Name": "Carcará Code"
+        }
+      }
     },
     "mac": {
       "target": "dmg",
@@ -86,7 +91,10 @@
       "category": "public.app-category.developer-tools",
       "hardenedRuntime": false,
       "identity": null,
-      "artifactName": "CarcaraCode-${version}-${arch}.dmg"
+      "artifactName": "CarcaraCode-${version}-${arch}.dmg",
+      "extendInfo": {
+        "CFBundleDisplayName": "Carcará Code"
+      }
     },
     "dmg": {
       "title": "Carcará Code ${version}"
